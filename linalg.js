@@ -117,10 +117,38 @@ class LinearAlgebra{
             throw new Error("Os parametros devem ser da classe matrix ou vector")
         }
         
+      
+        let c 
+        if(a instanceof Vector && b instanceof Matrix){
+           
+            c = new Vector(a.dim)
+            let contador = 0
+            let totalColunas = b.cols
+            let retornou = false
+            for(let i = 1; i<= a.dim ;i++){
+               retornou = false
+                let contaLinha = i
+                
+                for(let j = contaLinha; j<=b.rows;j++){
+                    if(j == contaLinha+1|| retornou){
+                        retornou = true
+                        continue
+                    }
+                    for(let k = 1 ; k <=b.cols;k++){
+                        contador += a.get(k)* b.get(j,k)
+                        if(k == totalColunas){
+                            c.set(contaLinha,contador)
+                            contador = 0
+                        }
+                    }
+                }
+
+            }
+            return c
+        }
         if(a.cols!=b.rows){
             throw new Error("A quantidade de linhas de A não são iguais a quantidade colunas de B")
         }
-        let c 
         if(a instanceof Vector&& b instanceof Vector){
             
             c = 0
@@ -203,8 +231,8 @@ class LinearAlgebra{
            }
            
         }
-        console.log(determinante)
-       
+        
+        return determinante
     }
 
     inv(a){
