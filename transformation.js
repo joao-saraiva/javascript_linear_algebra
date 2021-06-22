@@ -73,7 +73,7 @@ class Transformations{
             }
             c.set(4,1)
             let la = new LinearAlgebra
-            if(x.toLowerCase == "x"){
+            if(x == "x"){
                 let b= new Matrix(4,4,[1,0,0,0,0,Math.cos(angulo),-Math.sin(angulo),0,0,Math.sin(angulo),Math.cos(angulo),0,0,0,0,1])
                 c = la.dot(c,b)
                 let e = new Vector(a.dim)
@@ -84,8 +84,8 @@ class Transformations{
 
 
             }
-            if(x.toLowerCase == "y"){
-                let b = new Matrix(4,4[Math.cos(angulo),0,Math.sin(angulo),0,0,1,0,0,-Math.sin(angulo),0,Math.cos(angulo),0,0,0,0,1])
+            if(x == "y"){
+                let b = new Matrix(4,4,[Math.cos(angulo),0,Math.sin(angulo),0,0,1,0,0,-Math.sin(angulo),0,Math.cos(angulo),0,0,0,0,1])
                 c = la.dot(c,b)
                 let e = new Vector(a.dim)
                 e.set(1,c.get(1))
@@ -93,7 +93,7 @@ class Transformations{
                 e.set(3,c.get(3))
                 return e
             }
-            if(x.toLowerCase == "z"){
+            if(x == "z"){
                 let b = new Matrix(4,4,[Math.cos(angulo),-Math.sin(angulo),0,0,Math.sin(angulo),Math.cos(angulo),0,0,0,0,1,0,0,0,0,1])
                 c = la.dot(c,b)
                 let e = new Vector(a.dim)
